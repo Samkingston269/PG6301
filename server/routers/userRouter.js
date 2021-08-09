@@ -1,17 +1,10 @@
 const router = require('express').Router();
-const { login, signUp } = require('../controllers/userController');
+const { userCreate, userLogin } = require('../controllers/userController');
 
 router.route('/login')
-    .post(login)
+    .post(userLogin)
 
 router.route('/signUp')
-    .post(signUp)
-
-router.route('/hello')
-    .get((req, res) => {
-        return res.status(200).send({
-            message: "Hello World"
-        });
-    })
+    .post(userCreate)
 
 module.exports = router;

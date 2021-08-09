@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 const { User } = require('../models/user');
 
-module.exports.signUp = async (req, res) => {
+module.exports.userCreate = async (req, res) => {
     let user = {};
     user = await User.findOne({ username: req.body.username });
     if (user) return res.status(400).send({
@@ -10,7 +10,7 @@ module.exports.signUp = async (req, res) => {
         message: 'user already exists'
     });
 
-    user = new User(_.pick(req.body, ['username', 'password']));
+    user = new User(_.pick(req.body, ['firstname', 'lastname', 'username', 'password']));
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -21,11 +21,11 @@ module.exports.signUp = async (req, res) => {
     })
 }
 
-module.exports.login = async (req, res) => {
+module.exports.userLogin = async (req, res) => {
     let user = await User.findOne({ username: req.body.username });
     if (!user) return res.status(400).send({
         error: "LOGIN_FAILED",
-        message: "invalid credentials"
+        message: "user not found"
     })
 
     const validUser = await bcrypt.compare(req.body.password, user.password);

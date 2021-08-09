@@ -2,6 +2,18 @@ const { Schema, model } = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const userSchema = Schema({
+    firstname: {
+        type: String,
+        required: true,
+        minlength: 2,
+        maxlength: 50
+    },
+    lastname: {
+        type: String,
+        required: true,
+        minlength: 2,
+        maxlength: 50
+    },
     username: {
         type: String,
         required: true,
@@ -21,7 +33,7 @@ const userSchema = Schema({
     },
     active: {
         type: Boolean,
-        default: false
+        default: true
     }
 }, { timestamps: true });
 
