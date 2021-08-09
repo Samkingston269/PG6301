@@ -1,25 +1,20 @@
 {
-  "name": "sam-proj",
+  "name": "sam-project",
   "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build-watch": "parcel watch ./src/client/index.html",
-    "start-watch": "nodemon ./src/server/server.js",
-    "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\"",
-    "build": "parcel build ./src/client/index.html",
-    "start": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-install": "cd client && npm install",
+    "server-install": "cd server && npm install",
+    "install": "npm run server-install && npm run client-install",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently \"npm run server\"  \"npm run client\""
   },
   "author": "Sam",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
-  },
   "devDependencies": {
-    "concurrently": "^6.2.1",
-    "nodemon": "^2.0.12",
-    "parcel": "^2.0.0-rc.0"
+    "concurrently": "^6.2.1"
   }
 }

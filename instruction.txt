@@ -1,0 +1,20 @@
+https://github.com/witchard/tutorial-react-parcel-express
+
+2.	Create a Git repository and get used to checking in as often as possible so you can "play back" what you did later
+3.	Create a new application with `npm init`
+4.	Add dependencies for React and Express, both for "production" (react, react-dom, react-router, react-router-dom, express, ws, body-parser) and "development" (parcel, jest, babel-jest , supertest, concurrently, prettier)
+5.	Create `src / client / index.html` ->` index.jsx` for the client and check with parcel that you can show "Hello world"
+6.	Create `src / server / server.js` and check that express can return the React code so you can run on port 3000
+
+
+7.	Create a welcome page, a chat page, a user info page and a React Router login page
+8.	For the user info page, make an API call to Express and retrieve information from the server. (You do not need to have login in place yet)
+9.	For the Login page, create login with Google either in frontend or with passport-google-oauth20. Update / api / profile to return user information
+10.	Create a front-end test with `expect (...). ToMatchSnapshot ()`
+11.	Create a web socket from the client that tries to send and receive data to the server from a separate page (/ chat)
+12.	Create a web socket on the server that receives web socket calls and sends them to all other sockets
+13.	View the web socket messages from the server on the client
+Once you have come this far you will have a skeleton to solve a lot. There are still some difficulties left, especially how to send authentication information with the socket. A couple of possibilities:
+
+If the login call places the user's information on a cookie (or on a session, which is sent on a cookie) then it will also be available on websockets
+The client can save the access_token in localStorage and send it as the first message when it connects to the server
