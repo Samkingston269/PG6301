@@ -1,3 +1,4 @@
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Home from "./components/pages/Home";
 import Chat from "./components/pages/Chat";
 import Login from "./components/pages/Login";
@@ -11,18 +12,18 @@ const Router = () => {
     return (
         <>
             <Switch>
-                <Route path="/chat" key="chat">
+                <PrivateRoute path="/chat" key="chat">
                     <Chat />
-                </Route>
+                </PrivateRoute>
                 <Route path="/login" key="login">
                     <Login />
                 </Route>
                 <Route path="/sign-up" key="login">
                     <SignUp />
                 </Route>
-                <Route path="/" key="home">
+                <PrivateRoute path="/" key="home">
                     <Home />
-                </Route>
+                </PrivateRoute>
             </Switch>
         </>
     )
