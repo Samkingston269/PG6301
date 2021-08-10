@@ -4,13 +4,13 @@ const { User } = require('../models/user');
 
 module.exports.userCreate = async (req, res) => {
     let user = {};
-    user = await User.findOne({ username: req.body.username });
+    user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send({
         error: 'SIGN_UP_FAILED',
         message: 'user already exists'
     });
 
-    user = new User(_.pick(req.body, ['firstname', 'lastname', 'username', 'password']));
+    user = new User(_.pick(req.body, ['firstname', 'lastname', 'email', 'password']));
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -22,7 +22,7 @@ module.exports.userCreate = async (req, res) => {
 }
 
 module.exports.userLogin = async (req, res) => {
-    let user = await User.findOne({ username: req.body.username });
+    let user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(400).send({
         error: "LOGIN_FAILED",
         message: "user not found"

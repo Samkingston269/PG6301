@@ -4,7 +4,7 @@ const { userCreate, userLogin } = require('../controllers/userController');
 router.route('/login')
     .post(userLogin)
 
-router.route('/signUp')
+router.route('/sign-up')
     .post(userCreate)
 
 module.exports = router;

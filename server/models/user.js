@@ -14,11 +14,11 @@ const userSchema = Schema({
         minlength: 2,
         maxlength: 50
     },
-    username: {
+    email: {
         type: String,
         required: true,
         minlength: 4,
-        maxlength: 20,
+        maxlength: 255,
         unique: true
     },
     password: {
