@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "../partials/Navbar";
 import { useState, useEffect } from "react";
 const Home = () => {
     const [name, setName] = useState("");
@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <h1>{process.env.REACT_APP_MYNAME}</h1>
+            <h1>Home Page</h1>
         </>
     )
 }
